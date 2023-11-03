@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import settingsSlice from "./components/reducer/settingsSlice";
 import { Provider } from "react-redux";
