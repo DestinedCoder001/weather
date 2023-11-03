@@ -1,9 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWind, faDroplet, faLightbulb, faCloud } from "@fortawesome/free-solid-svg-icons";
 
-export default function InfoGrid(props) {
-  const state = props.state;
-
+export default function InfoGrid({ state }) {
   return (
     <div className="grid grid-cols-2 m-8 gap-4 mx-auto md:w-3/5">
 

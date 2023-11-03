@@ -28,7 +28,7 @@ export default function Home() {
   let data;
   let res;
 
-  async function getData(city) {
+   async function getData(city) {
     setLoading(true);
     const ctrl = new AbortController();
     const timeoutFn = setTimeout(() => {
@@ -123,7 +123,7 @@ export default function Home() {
               {d}
             </p>
             <p className="font-bold text-right text-2xl mt-4 mr-4 bg-blue-600 text-white p-2 rounded-md">
-              {state.currentCity}{" "}
+              {state.currentCity}
               <span className="text-[0.8rem]">{state.country}</span>
             </p>
           </div>
