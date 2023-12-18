@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import key from "../key";
-import {
-  addSuccess,
-  noInternet,
-  noValidate,
-  notFound,
-} from "./utilityFunctions";
+import Toast, { notifyError, notifySuccess, notifyWarning } from "./Toast";
+// import {
+//   addSuccess,
+//   noInternet,
+//   noValidate,
+//   notFound,
+// } from "./utilityFunctions";
 export default function SaveLocation() {
   const [location, setLocation] = useState({ lData: "" });
   const [lsLoc, setLoc] = useState("");
@@ -25,9 +26,9 @@ export default function SaveLocation() {
 
   useEffect(() => {
     if (okay === true) {
-      addSuccess();
+      notifySuccess("Location Saved")
     } else if (okay === false) {
-      notFound();
+      notifyError("Not Found!")
     }
   }, [okay, triggerEffect]);
 
@@ -63,13 +64,13 @@ export default function SaveLocation() {
 
   function saveLocation() {
     if (!navigator.onLine) {
-      noInternet();
+      notifyError("No Internet")
     } else if (
       location.lData.length < 1 ||
       location.lData === "" ||
       location.lData.trim() === ""
       ) {
-        noValidate();
+        notifyWarning("Please enter a valid name.")
       } else {
         searchLocation();
       }
@@ -78,6 +79,8 @@ export default function SaveLocation() {
   }
 
   return (
+    <>
+    <Toast />
     <div className="m-6">
       <p className="text-lg font-bold underline">Save Location Data</p>
       <p>
@@ -108,5 +111,6 @@ export default function SaveLocation() {
         </form>
       </div>
     </div>
+    </>
   );
 }

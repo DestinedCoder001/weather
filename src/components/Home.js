@@ -4,7 +4,7 @@ import key from "../key";
 import InfoGrid from "./infoGrid";
 import Forecasts from "./forcasts";
 import Spinner from "./Spinner";
-import { noInternet } from "./utilityFunctions";
+import Toast, { notifyError } from "./Toast";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
@@ -73,7 +73,7 @@ export default function Home() {
     });
     setLoading(false);
   }
-  !navigator.onLine && noInternet();
+  !navigator.onLine && notifyError("No internet")
 
   state.currentCity.length > 1 &&
     sessionStorage.setItem("preserve_search", state.currentCity);
@@ -104,6 +104,7 @@ export default function Home() {
 
   return (
     <>
+    <Toast />
       {loading ? (
         <Spinner />
       ) : (
